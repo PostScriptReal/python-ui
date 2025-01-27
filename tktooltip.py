@@ -5,6 +5,9 @@
 
 The tool tip can be attached to any widget's mouse enter and leave events.
 It displays the given text wrapped in a box of high contrast.
+
+THIS IS A FORKED VERSION OF THE ORIGINAL CODE FROM https://github.com/DaedalicEntertainment/python-ui
+THIS FORK ADDS THE ABILITY TO THEME THE TOOLTIP
 '''
 
 import tkinter as tk
@@ -14,9 +17,11 @@ import tkinter as tk
 
 class ToolTip(object):
 
-    def __init__(self, widget, text='tool tip'):
+    def __init__(self, widget, text='tool tip', background='bisque', foreground='black'):
         self.widget = widget
         self.text = text
+        self.bg = background
+        self.fg = foreground
         if not self.text:
             self.widget.unbind('<Enter>')
             self.widget.unbind('<Leave>')
@@ -35,7 +40,7 @@ class ToolTip(object):
         self.window.wm_overrideredirect(True)
         self.window.wm_geometry('+%d+%d' % (x, y))
         label = tk.Label(self.window, text=self.text, justify='left', padx=4, pady=2, wraplength=250,
-            background='bisque', foreground='black', relief='flat', borderwidth=0)
+            background=self.bg, foreground=self.fg, relief='flat', borderwidth=0)
         label.pack(ipadx=1)
 
     def close(self, event=None):
