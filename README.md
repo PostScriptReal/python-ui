@@ -61,3 +61,6 @@ Used for the GUI is a package included in Python's Windows installer:
 ### Version 0.1
 
 Initial release.
+
+### Version 0.2 (fork)
+Added theming to ToolTip class!
